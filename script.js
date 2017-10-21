@@ -21,11 +21,17 @@ var churchillSpeech = {
     donatePrompt;
 
 
-
+/* getAuthorAndYearString function:
+- accepts speechesArray data 
+- returns author and year for each speech in speechesArray */
 function getAuthorAndYearString (speechData) {
-  return 'This speech was written by ' + speechesArray[speechData].author + ' in ' + speechesArray[speechData].year + '<br>';
+  return 'This speech was written by ' + speechesArray[speechData].author + ' in ' + speechesArray[speechData].year + "." + '<br>';
 };
 
+/* displayBCEString function:
+- accepts speechesArray data
+- if statement determines whether speech was written before or after the common era based on Boolean value from yearIsBCE key
+- returns string declaring whether speech took place before or after the common era */
 function displayBCEString (speechData) {
   if(speechesArray[speechData].yearIsBCE === true){
     return 'This speech took place before the common era.<br>';
@@ -34,6 +40,11 @@ function displayBCEString (speechData) {
   }
 };
 
+/* getOldestOrYoungestString function:
+- accepts speechesArray data
+- establishes variables for oldest and newest speeches
+- determines oldest and newest variables using a for loop to search through year key values in speechesArray 
+- returns string declaring that the selected speech is oldest, most recent, or neither oldest nor most recent speech on the page  */
 function getOldestOrYoungestString (speechData) {
   var oldest = speechesArray[0].year,
       newest = speechesArray[0].year;
@@ -47,10 +58,10 @@ function getOldestOrYoungestString (speechData) {
     }
   }
 
-  if(speechesArray[i].year === oldest){
+  if(speechesArray[speechData].year === oldest){
     return 'This is the oldest speech on the page.<br>';
   }
-  if(speechesArray[i].year === newest){
+  if(speechesArray[speechData].year === newest){
     return 'This is the most recent speech on the page.<br>';
   } else {
     return "This is neither the oldest nor the most recent speech on the page.<br>";
